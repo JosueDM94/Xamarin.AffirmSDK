@@ -1,0 +1,10 @@
+﻿<metadata>
+    <!-- Normalize the namespace for .NET -->
+    <attr path="/api/package[@name='com.affirm.android']" name="managedName">Affirm</attr>
+    <attr path="/api/package[@name='com.affirm.android.model']" name="managedName">Affirm.Model</attr>
+    <attr path="/api/package[@name='com.affirm.android.exception']" name="managedName">Affirm.Exception</attr>
+
+    <!-- Error CS0535: 'AddressSerializer' does not implement interface member 'IJsonSerializer.Serialize(Object, IType, IJsonSerializationContext)'-->
+    <attr path="/api/package[@name='com.affirm.android.model']/class[@name='AddressSerializer']/method[@name='serialize' and count(parameter)=3 and parameter[1][@type='com.affirm.android.model.AbstractAddress'] and parameter[2][@type='java.lang.reflect.Type'] and parameter[3][@type='com.google.gson.JsonSerializationContext']]/parameter[1]"
+          name="managedType">Java.Lang.Object</attr>
+</metadata>
