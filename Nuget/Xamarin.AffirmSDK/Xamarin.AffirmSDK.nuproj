@@ -38,6 +38,20 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bindings\AffirmSDK.iOS\AffirmSDK.iOS.csproj">
+      <Name>AffirmSDK.iOS</Name>
+      <SkipGetTargetFrameworkProperties></SkipGetTargetFrameworkProperties>
+      <AdditionalProperties></AdditionalProperties>
+      <ReferenceOutputAssembly></ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bindings\AffirmSDK.Android\AffirmSDK.Android.csproj">
+      <Name>AffirmSDK.Android</Name>
+      <SkipGetTargetFrameworkProperties></SkipGetTargetFrameworkProperties>
+      <ReferenceOutputAssembly></ReferenceOutputAssembly>
+      <AdditionalProperties></AdditionalProperties>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />
 </Project>
