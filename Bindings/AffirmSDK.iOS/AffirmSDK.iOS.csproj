@@ -7,9 +7,9 @@
     <ProjectGuid>{F142E9E4-6A27-415A-9902-CA0D58BBFEAB}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>NativeLibrary</RootNamespace>
+    <RootNamespace>AffirmSDK.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>NativeLibrary</AssemblyName>
+    <AssemblyName>AffirmSDK.iOS</AssemblyName>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,17 +41,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingCoreSource Include="Structs.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging">
       <Version>0.2.5-dev.8</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="AffirmSDK.framework">
+      <Kind>Framework</Kind>
+      <Frameworks>UIKit Foundation Security WebKit</Frameworks>
+      <ForceLoad>True</ForceLoad>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A435BED-D045-4C8C-A6FD-0913C3269143}</ProjectGuid>
-    <Description>Xamarin Binding Library of Affirm SDK for iOS &amp; Android</Description>
-    <PackageId>Xamarin.AffirmSDK</PackageId>
+    <ProjectGuid>{1A448518-D177-47FC-94FC-C22342EC7E10}</ProjectGuid>
+    <Description>Xamarin.AffirmSDK.iOS</Description>
+    <PackageId>Xamarin.AffirmSDK.iOS</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
-    <Authors>Josué Díaz</Authors>
+    <Authors>Josue Diaz</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Xamarin.AffirmSDK</RootNamespace>
+    <RootNamespace>Xamarin.AffirmSDK.iOS</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>Xamarin.AffirmSDK</AssemblyName>
+    <AssemblyName>Xamarin.AffirmSDK.iOS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,15 +41,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Bindings\AffirmSDK.iOS\AffirmSDK.iOS.csproj">
       <Name>AffirmSDK.iOS</Name>
-      <SkipGetTargetFrameworkProperties></SkipGetTargetFrameworkProperties>
-      <AdditionalProperties></AdditionalProperties>
-      <ReferenceOutputAssembly></ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bindings\AffirmSDK.Android\AffirmSDK.Android.csproj">
-      <Name>AffirmSDK.Android</Name>
-      <SkipGetTargetFrameworkProperties></SkipGetTargetFrameworkProperties>
-      <ReferenceOutputAssembly></ReferenceOutputAssembly>
-      <AdditionalProperties></AdditionalProperties>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />

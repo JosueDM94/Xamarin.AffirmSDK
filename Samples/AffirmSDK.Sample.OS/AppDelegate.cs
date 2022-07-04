@@ -17,6 +17,7 @@ namespace AffirmSDK.Sample.OS
 		{
 			// Override point for customization after application launch.
 			// If not required for your application you can safely delete this method
+			AffirmConfiguration.SharedInstance.ConfigureWithPublicKey("2G9MNM7462PB1TAV", AffirmEnvironment.Sandbox, "Affirm Example Swift");
 			return true;
 		}
 

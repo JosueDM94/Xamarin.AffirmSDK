@@ -1,7 +1,12 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Android.App;
+using Android;
+
+// This attribute allows you to mark your assemblies as “safe to link”.
+// When the attribute is present, the linker—if enabled—will process the assembly
+// even if you’re using the “Link SDK assemblies only” option, which is the default for device builds.
+
+[assembly: LinkerSafe]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -9,9 +14,9 @@ using Android.App;
 [assembly: AssemblyTitle("AffirmSDK.Android")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Josue Diaz")]
 [assembly: AssemblyProduct("AffirmSDK.Android")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

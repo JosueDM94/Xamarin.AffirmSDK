@@ -1,0 +1,6 @@
+framework module AffirmSDK {
+  umbrella header "AffirmSDK.h"
+
+  export *
+  module * { export * }
+}
