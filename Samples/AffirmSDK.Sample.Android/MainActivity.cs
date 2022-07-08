@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using AffirmSdk;
-using AffirmSdk.Exception;
-using AffirmSdk.Model;
+using AffirmSDK.Exception;
+using AffirmSDK.Model;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -36,12 +35,14 @@ namespace AffirmSDK.Sample.Android
 			FindViewById<Button>(Resource.Id.vcnCheckout).Click += delegate { Affirm.StartCheckout(this, CheckoutModel(), true); };
 			FindViewById<Button>(Resource.Id.siteModalButton).Click += delegate { Affirm.ShowSiteModal(this, "5LNMQ33SEUYHLNUC"); };
 			FindViewById<Button>(Resource.Id.productModalButton).Click += delegate { Affirm.ShowProductModal(this, Price, "0Q97G0Z4Y4TLGHGB"); };
-			FindViewById<Button>(Resource.Id.trackOrderConfirmed).Click += delegate {
+			FindViewById<Button>(Resource.Id.trackOrderConfirmed).Click += delegate
+			{
 				Toast.MakeText(this, "Track successfully", ToastLength.Short).Show();
 				Affirm.TrackOrderConfirmed(this, TrackModel());
 			};
 
-			FindViewById<Button>(Resource.Id.clearCookies).Click += delegate {
+			FindViewById<Button>(Resource.Id.clearCookies).Click += delegate
+			{
 				CookiesUtil.ClearCookies(this);
 			};
 
@@ -55,6 +56,18 @@ namespace AffirmSDK.Sample.Android
 
 			promotionTextView = FindViewById<TextView>(Resource.Id.promotionTextView);
 			promoRequest = Affirm.FetchPromotion(requestData, promotionTextView.TextSize, this, this);
+		}
+
+		protected override void OnStart()
+		{
+			base.OnStart();
+			promoRequest?.Create();
+		}
+
+		protected override void OnStop()
+		{
+			promoRequest?.Cancel();
+			base.OnStop();
 		}
 
 		private AffirmTrack TrackModel()
@@ -115,14 +128,14 @@ namespace AffirmSDK.Sample.Android
 			var name = Name.InvokeBuilder().SetFull("John Smith").Build();
 
 			//  In canadian, use CAAddress
-			//        val address = CAAddress.builder()
-			//                .setStreet1("123 Alder Creek Dr.")
-			//                .setStreet2("Floor 7")
-			//                .setCity("Toronto")
-			//                .setRegion1Code("ON")
-			//                .setPostalCode("M4B 1B3")
-			//                .setCountryCode("CA")
-			//                .build()
+			//var caaddress = CAAddress.InvokeBuilder()
+			//		.SetStreet1("123 Alder Creek Dr.")
+			//		.SetStreet2("Floor 7")
+			//		.SetCity("Toronto")
+			//		.SetRegion1Code("ON")
+			//		.SetPostalCode("M4B 1B3")
+			//		.SetCountryCode("CA")
+			//		.Build();
 
 			//  In US, use Address
 			var address = Address.InvokeBuilder()
@@ -157,37 +170,29 @@ namespace AffirmSDK.Sample.Android
 					.Build();
 		}
 
-		protected override void OnStart()
-		{
-			base.OnStart();
-			promoRequest?.Create();
-		}
-
-		protected override void OnStop()
-		{
-			promoRequest?.Cancel();
-			base.OnStop();
-		}
-
 		protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
 		{
-			if (Affirm.HandleCheckoutData(this, requestCode, (int)resultCode, data)) {
+			if (Affirm.HandleCheckoutData(this, requestCode, (int)resultCode, data))
+			{
 				return;
 			}
 
-			if (Affirm.HandleVcnCheckoutData(this, requestCode, (int)resultCode, data)) {
+			if (Affirm.HandleVcnCheckoutData(this, requestCode, (int)resultCode, data))
+			{
 				return;
-	
+
 			}
 
-			if (Affirm.HandlePrequalData(this, requestCode, (int)resultCode, data)) {
+			if (Affirm.HandlePrequalData(this, requestCode, (int)resultCode, data))
+			{
 				return;
-	
+
 			}
 
 			base.OnActivityResult(requestCode, resultCode, data);
 		}
 
+		// - Affirm.CheckoutCallbacks
 		public void OnAffirmCheckoutError(string message)
 		{
 			Toast.MakeText(this, $"Checkout Error: {message}", ToastLength.Long).Show();
@@ -216,7 +221,7 @@ namespace AffirmSDK.Sample.Android
 		public void OnAffirmVcnCheckoutCancelledReason(VcnReason vcnReason)
 		{
 			Toast.MakeText(this, $"Vcn Checkout Cancelled: {vcnReason}", ToastLength.Long).Show();
-		}	
+		}
 
 		public void OnAffirmVcnCheckoutSuccess(CardDetails cardDetails)
 		{

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleDisplayName</key>
-    <string>AffirmSDK.Sample.OS</string>
+    <string>AffirmSDK.Sample.iOS</string>
     <key>CFBundleIdentifier</key>
     <string>com.distillery.affirm</string>
     <key>CFBundleShortVersionString</key>

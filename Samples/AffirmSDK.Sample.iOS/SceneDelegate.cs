@@ -2,7 +2,7 @@
 using Foundation;
 using UIKit;
 
-namespace NewSingleViewTemplate
+namespace AffirmSDK.Sample.iOS
 {
 	[Register("SceneDelegate")]
 	public class SceneDelegate : UIResponder, IUIWindowSceneDelegate

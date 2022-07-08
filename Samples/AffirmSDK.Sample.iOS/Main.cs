@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace AffirmSDK.Sample.OS
+namespace AffirmSDK.Sample.iOS
 {
 	public class Application
 	{

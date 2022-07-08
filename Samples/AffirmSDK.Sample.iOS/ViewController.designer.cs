@@ -7,7 +7,7 @@
 using Foundation;
 using System.CodeDom.Compiler;
 
-namespace AffirmSDK.Sample.OS
+namespace AffirmSDK.Sample.iOS
 {
 	[Register ("ViewController")]
 	partial class ViewController

@@ -1,5 +1,4 @@
 ﻿using System;
-using AffirmSdk;
 using Android.App;
 using Android.Runtime;
 

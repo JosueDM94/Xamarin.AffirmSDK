@@ -4,7 +4,7 @@ using CoreGraphics;
 using Foundation;
 using UIKit;
 
-namespace AffirmSDK.Sample.OS
+namespace AffirmSDK.Sample.iOS
 {
 	public partial class ViewController : UIViewController, IUITextFieldDelegate, IAffirmPrequalDelegate, IAffirmCheckoutDelegate
 	{
@@ -18,7 +18,7 @@ namespace AffirmSDK.Sample.OS
 		{
 			base.ViewDidLoad();
 
-			// Using AffirmPromotionalButton for first button (See more in configurPromotionalMessage)
+			// Using AffirmPromotionalButton for first button (See more in configurPromotionalMessage)			
 			promotionalButton = new AffirmPromotionalButton(promoID: null, showCTA: true, pageType: AffirmPageType.Product, presentingViewController: this, frame: new CGRect(x: 0, y: 0, width: 315, height: 34));
 			stackView.InsertArrangedSubview(promotionalButton, stackIndex: 0);
 
@@ -41,17 +41,17 @@ namespace AffirmSDK.Sample.OS
 			NSNotificationCenter.DefaultCenter.RemoveObserver(this, aName: UIKeyboard.WillChangeFrameNotification, anObject: null);
 			NSNotificationCenter.DefaultCenter.RemoveObserver(this, aName: UIKeyboard.WillHideNotification, anObject: null);
 		}
-		
+
 		private void keyboardWillChangeFrame(NSNotification notification)
-        {
+		{
 			if (notification.UserInfo.ValueForKey(UIKeyboard.FrameEndUserInfoKey) is NSValue value)
-            {
+			{
 				scrollView.ContentInset = new UIEdgeInsets(top: 0, left: 0, bottom: value.CGRectValue.Height, right: 0);
-            }
-        }
-		
+			}
+		}
+
 		private void keyboardWillBeHidden(NSNotification notification)
-        {
+		{
 			scrollView.ContentInset = UIEdgeInsets.Zero;
 		}
 
@@ -148,8 +148,9 @@ namespace AffirmSDK.Sample.OS
 
 		private void configureTextField()
 		{
-			var textFields = new List<UITextField>() { publicKeyTextfield, amountTextField, promoIDTextField};
-			foreach (var textField in textFields) {
+			var textFields = new List<UITextField>() { publicKeyTextfield, amountTextField, promoIDTextField };
+			foreach (var textField in textFields)
+			{
 				var toolbar = new UIToolbar();
 				var flexibleItem = new UIBarButtonItem(systemItem: UIBarButtonSystemItem.FlexibleSpace, target: null, action: null);
 				var doneItem = new UIBarButtonItem(systemItem: UIBarButtonSystemItem.Done, target: textField, action: new ObjCRuntime.Selector("resignFirstResponder"));
@@ -186,11 +187,11 @@ namespace AffirmSDK.Sample.OS
 				return;
 			}
 
-			if(textField == publicKeyTextfield)
+			if (textField == publicKeyTextfield)
 			{
 				AffirmConfiguration.SharedInstance.ConfigureWithPublicKey(publicKey: text, environment: AffirmEnvironment.Sandbox);
 			}
-			else if( textField == promoIDTextField)
+			else if (textField == promoIDTextField)
 			{
 				promotionalButton.PromoID = text;
 			}
@@ -200,7 +201,7 @@ namespace AffirmSDK.Sample.OS
 		public void DidFailWithError(AffirmBaseWebViewController webViewController, NSError error)
 		{
 			Console.WriteLine($"Prequal failed with error: {error.LocalizedDescription}");
-			if(webViewController is not null)
+			if (webViewController is not null)
 			{
 				var alertController = UIAlertController.Create(title: "Error", message: error.LocalizedDescription, preferredStyle: UIAlertControllerStyle.Alert);
 				alertController.AddAction(UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (action) =>
@@ -219,19 +220,19 @@ namespace AffirmSDK.Sample.OS
 
 		public void VcnCheckout(UIViewController checkoutViewController, AffirmCreditCard creditCard)
 		{
-			if(creditCard.CardholderName is string cardholderName &&
+			if (creditCard.CardholderName is string cardholderName &&
 				creditCard.Number is string number &&
 				creditCard.Cvv is string cvv &&
 				creditCard.Expiration is string expiration)
-            {
+			{
 				resultLabel.Text = $"Received credit card:\n" +
-                    $"credit card id: {creditCard.CreditCardId}\n" +
-                    $"checkout token: {creditCard.CheckoutToken}\n" +
-                    $"card holder name: {cardholderName}\n" +
-                    $"number:{number}\n" +
-                    $"cvv: {cvv}\n" +
-                    $"expiration: {expiration}\n" +
-                    $"callback id: {creditCard.CallbackId}";
+					$"credit card id: {creditCard.CreditCardId}\n" +
+					$"checkout token: {creditCard.CheckoutToken}\n" +
+					$"card holder name: {cardholderName}\n" +
+					$"number:{number}\n" +
+					$"cvv: {cvv}\n" +
+					$"expiration: {expiration}\n" +
+					$"callback id: {creditCard.CallbackId}";
 			}
 			checkoutViewController.DismissViewController(animated: true, completionHandler: null);
 		}

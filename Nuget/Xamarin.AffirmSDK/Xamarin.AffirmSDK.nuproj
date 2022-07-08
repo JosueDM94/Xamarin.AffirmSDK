@@ -4,18 +4,33 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A448518-D177-47FC-94FC-C22342EC7E10}</ProjectGuid>
-    <Description>Xamarin.AffirmSDK.iOS</Description>
-    <PackageId>Xamarin.AffirmSDK.iOS</PackageId>
+    <ProjectGuid>{5E4D9A38-8F6F-45D0-9414-198BA4147E89}</ProjectGuid>
+    <Description>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</Description>
+    <PackageId>Xamarin.AffirmSDK</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
     <Authors>Josue Diaz</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Xamarin.AffirmSDK.iOS</RootNamespace>
+    <RootNamespace>Xamarin.AffirmSDK</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>Xamarin.AffirmSDK.iOS</AssemblyName>
+    <AssemblyName>Xamarin.AffirmSDK</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Owners>Josue Diaz</Owners>
+    <Copyright>Copyright Josué Díaz © 2022</Copyright>
+    <Title>Xamarin.AffirmSDK</Title>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageReleaseNotes>[iOS] AffirmSDK 5.0.19
+[Android] AffirmSDK 2.0.19</PackageReleaseNotes>
+    <Summary>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</Summary>
+    <PackageProjectUrl>https://github.com/JosueDM94/Xamarin.AffirmSDK</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/JosueDM94/Xamarin.AffirmSDK/blob/main/icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/JosueDM94/Xamarin.AffirmSDK/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageTags>Xamarin Xamarin.iOS Xamarin.Android Xamarin.Native Native AffirmSDK AffirmSdk Affirm iOS Android Payment</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,20 +43,23 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="readme.txt">
-      <IncludeInPackage>true</IncludeInPackage>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging">
       <Version>0.2.5-dev.8</Version>
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Bindings\AffirmSDK.Android\AffirmSDK.Android.csproj">
+      <Name>AffirmSDK.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Bindings\AffirmSDK.iOS\AffirmSDK.iOS.csproj">
       <Name>AffirmSDK.iOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="..\..\icon.png" Pack="true" PackagePath="" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />
