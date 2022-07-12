@@ -148,8 +148,7 @@ namespace AffirmSDK.Sample.iOS
 
 		private void configureTextField()
 		{
-			var textFields = new List<UITextField>() { publicKeyTextfield, amountTextField, promoIDTextField };
-			foreach (var textField in textFields)
+			foreach (var textField in new List<UITextField>() { publicKeyTextfield, amountTextField, promoIDTextField })
 			{
 				var toolbar = new UIToolbar();
 				var flexibleItem = new UIBarButtonItem(systemItem: UIBarButtonSystemItem.FlexibleSpace, target: null, action: null);
