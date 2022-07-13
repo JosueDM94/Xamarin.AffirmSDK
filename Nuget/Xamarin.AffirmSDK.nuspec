@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Xamarin.AffirmSDK</id>
+    <version>1.0.1</version>
+    <title>Xamarin.AffirmSDK</title>
+    <authors>Josue Diaz</authors>
+    <owners>Josue Diaz</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/JosueDM94/Xamarin.AffirmSDK</projectUrl>
+    <description>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</description>
+    <summary>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</summary>
+    <releaseNotes>[iOS] AffirmSDK 5.0.19
+[Android] AffirmSDK 2.0.19</releaseNotes>
+    <copyright>Copyright Josué Díaz © 2022</copyright>
+    <language>en-US</language>
+    <tags>xamarin, ios, android, affirm, checkout, sdk</tags>
+    <readme>README.md</readme>
+    <repository type="git" url="https://github.com/JosueDM94/Xamarin.AffirmSDK" />
+    <developmentDependency>false</developmentDependency>
+    <dependencies>
+      <group targetFramework="MonoAndroid11.0">
+        <!--MonoAndroid dependencies go here-->
+        <dependency id="GoogleGson" version="2.8.5" />
+        <dependency id="Square.OkHttp3" version="4.9.0.1" />
+        <dependency id="Xamarin.AndroidX.AppCompat" version="1.0.2" />
+        <dependency id="Xamarin.Google.Guava" version="28.2.0" />
+        <dependency id="Xamarin.Kotlin.StdLib" version="1.3.21" />
+        <dependency id="Xamarin.GooglePlayServices.Auth" version="117.0.0" />
+      </group>
+      <group targetFramework="Xamarin.iOS1.0">
+          <!--Xamarin.iOS10 dependencies go here-->
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Java.Interop" targetFramework="MonoAndroid11.0" />
+      <frameworkAssembly assemblyName="Mono.Android" targetFramework="MonoAndroid11.0" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid11.0" />
+      <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid11.0" />
+      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Drawing.Common.dll" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <!-- NuGet reference assemblies -->
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/LICENSE" target="LICENSE" />
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/icon.png" target="icon.png" />
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/README.md" target="README.md" />
+
+    <!-- iOS reference assemblies -->
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/Bindings/AffirmSDK.iOS/bin/Release/AffirmSDK.iOS.dll" target="lib/xamarinios10/AffirmSDK.iOS.dll" />
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/Bindings/AffirmSDK.iOS/bin/Release/AffirmSDK.iOS.xml" target="lib/xamarinios10/AffirmSDK.iOS.xml" />
+
+    <!-- Android reference assemblies -->
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/Bindings/AffirmSDK.Android/bin/Release/AffirmSDK.Android.dll" target="lib/monoandroid11.0/AffirmSDK.Android.dll" />
+    <file src="/Users/josuemanueldiasmayorga/Projects/Xamarin/Xamarin.AffirmSDK/Bindings/AffirmSDK.Android/bin/Release/AffirmSDK.Android.xml" target="lib/monoandroid11.0/AffirmSDK.Android.xml" />    
+  </files>
+</package>

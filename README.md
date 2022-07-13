@@ -5,7 +5,7 @@ For more info, read [Adding Package Dependencies to Your App](https://developer.
 
 # Installation
 
-Install by the NuGet Gallery, using the identifier "Xamarin.AffirmSDK".
+Install by the NuGet Gallery, using the identifier "[Xamarin.AffirmSDK](https://www.nuget.org/packages/Xamarin.AffirmSDK)".
 
 # Example
 
