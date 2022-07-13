@@ -1,8 +1,6 @@
 # Xamarin.AffirmSDK
 This is a set of Xamarin bindings of Affirm SDK for iOS and Android
 
-For more info, read [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) from Apple.
-
 # Installation
 
 Install by the NuGet Gallery, using the identifier "[Xamarin.AffirmSDK](https://www.nuget.org/packages/Xamarin.AffirmSDK)".
