@@ -27,15 +27,15 @@
         <!--MonoAndroid dependencies go here-->
         <dependency id="GoogleGson" version="2.8.5" />
         <dependency id="Square.OkHttp3" version="4.9.0.1" />
-        <dependency id="Xamarin.AndroidX.AppCompat" version="1.2.0.7" />
+        <dependency id="Xamarin.AndroidX.AppCompat" version="1.1.0.2" />
         <dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.0.2" />
         <dependency id="Xamarin.AndroidX.GridLayout" version="1.0.0" />
-        <dependency id="Xamarin.Google.Android.Material." version="1.2.1.1" />
+        <dependency id="Xamarin.Google.Android.Material" version="1.2.1.1" />
         <dependency id="Xamarin.Google.Guava" version="28.2.0" />
         <dependency id="Xamarin.GooglePlayServices.Auth" version="117.0.0" />
         <dependency id="Xamarin.Joda.Money" version="0.12.0" />
-        <dependency id="Xamarin.Kotlin.Android.Extensions.Runtime" version="1.4.32" />
-        <dependency id="Xamarin.Kotlin.Stdlib" version="1.4.32.1" />
+        <dependency id="Xamarin.Kotlin.Android.Extensions.Runtime" version="1.4.20" />
+        <dependency id="Xamarin.Kotlin.Stdlib" version="1.4.20" />
       </group>
       <group targetFramework="Xamarin.iOS1.0">
           <!--Xamarin.iOS10 dependencies go here-->
