@@ -59,13 +59,15 @@ namespace AffirmSDK
 	}
 
 	// @protocol AffirmJSONifiable <NSObject>
-	/* Check whether adding [Model] to this declaration is appropriate.
-	   [Model] is used to generate a C# class that implements this protocol,
-	   and might be useful for protocols that consumers are supposed to implement,
-	   since consumers can subclass the generated class instead of implementing
-	   the generated interface. If consumers are not supposed to implement this
-	   protocol, then [Model] is redundant and will generate code that will never
-	   be used. */
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface AffirmJSONifiable
@@ -73,6 +75,7 @@ namespace AffirmSDK
 		// @required -(NSMutableDictionary * _Nonnull)toJSONDictionary;
 		[Abstract]
 		[Export("toJSONDictionary")]
+		// [Verify(MethodToProperty)]
 		NSMutableDictionary ToJSONDictionary();
 	}
 
@@ -304,21 +307,21 @@ namespace AffirmSDK
 		AffirmCheckout CheckoutWithItems(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber taxAmount, NSDecimalNumber shippingAmount, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata);
 
 		// -(instancetype _Nonnull)initWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping discounts:(NSArray<AffirmDiscount *> * _Nullable)discounts metadata:(NSDictionary * _Nullable)metadata financingProgram:(NSString * _Nullable)financingProgram payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("init(items:shipping:discounts:metadata:financingProgram:payoutAmount:)")));
-		//[Introduced (PlatformName.iOS, 2, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
-		//[Deprecated (PlatformName.iOS, 13, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
-		//[Export ("initWithItems:shipping:discounts:metadata:financingProgram:payoutAmount:")]
-		//IntPtr Constructor (AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber payoutAmount);
+		//[Introduced(PlatformName.iOS, 2, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
+		//[Deprecated(PlatformName.iOS, 13, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
+		//[Export("initWithItems:shipping:discounts:metadata:financingProgram:payoutAmount:")]
+		//IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber payoutAmount);
 
 		// -(instancetype _Nonnull)initWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping discounts:(NSArray<AffirmDiscount *> * _Nullable)discounts metadata:(NSDictionary * _Nullable)metadata financingProgram:(NSString * _Nullable)financingProgram totalAmount:(NSDecimalNumber * _Nonnull)totalAmount __attribute__((swift_name("init(items:shipping:discounts:metadata:financingProgram:totalAmount:)")));
 		[Export("initWithItems:shipping:discounts:metadata:financingProgram:totalAmount:")]
 		IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber totalAmount);
 
-		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("checkout(items:shipping:payoutAmount:)")));
-		//[Introduced (PlatformName.iOS, 2, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
-		//[Deprecated (PlatformName.iOS, 13, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
-		//[Static]
-		//[Export ("checkoutWithItems:shipping:payoutAmount:")]
-		//AffirmCheckout CheckoutWithItems (AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber payoutAmount);
+        // +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("checkout(items:shipping:payoutAmount:)")));
+        //[Introduced(PlatformName.iOS, 2, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
+        //[Deprecated(PlatformName.iOS, 13, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
+        //[Static]
+        //[Export("checkoutWithItems:shipping:payoutAmount:")]
+        //AffirmCheckout CheckoutWithItems(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber payoutAmount);
 
 		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping totalAmount:(NSDecimalNumber * _Nonnull)totalAmount __attribute__((swift_name("checkout(items:shipping:totalAmount:)")));
 		[Static]
@@ -437,13 +440,15 @@ namespace AffirmSDK
 	}
 
 	// @protocol AffirmRequestProtocol <NSObject>
-	/* Check whether adding [Model] to this declaration is appropriate.
-	   [Model] is used to generate a C# class that implements this protocol,
-	   and might be useful for protocols that consumers are supposed to implement,
-	   since consumers can subclass the generated class instead of implementing
-	   the generated interface. If consumers are not supposed to implement this
-	   protocol, then [Model] is redundant and will generate code that will never
-	   be used. */
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface AffirmRequestProtocol
@@ -451,42 +456,44 @@ namespace AffirmSDK
 		// @required -(NSString * _Nonnull)path;
 		[Abstract]
 		[Export("path")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string Path { get; }
 
 		// @required -(AffirmHTTPMethod)method;
 		[Abstract]
 		[Export("method")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		AffirmHTTPMethod Method { get; }
 
 		// @required -(NSDictionary * _Nonnull)parameters;
 		[Abstract]
 		[Export("parameters")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDictionary Parameters { get; }
 
 		// @optional -(Class _Nonnull)responseClass;
 		[Export("responseClass")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		Class ResponseClass { get; }
 
 		// @optional -(NSDictionary * _Nonnull)headers;
 		[Export("headers")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDictionary Headers { get; }
 	}
 
 	interface IAffirmRequestProtocol { }
 
 	// @protocol AffirmResponseProtocol <NSObject>
-	/* Check whether adding [Model] to this declaration is appropriate.
-	   [Model] is used to generate a C# class that implements this protocol,
-	   and might be useful for protocols that consumers are supposed to implement,
-	   since consumers can subclass the generated class instead of implementing
-	   the generated interface. If consumers are not supposed to implement this
-	   protocol, then [Model] is redundant and will generate code that will never
-	   be used. */
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface AffirmResponseProtocol
@@ -503,17 +510,21 @@ namespace AffirmSDK
 		AffirmResponseProtocol ParseError(NSData data);
 	}
 
+	interface IAffirmResponseProtocol { }
+
 	// typedef void (^AffirmRequestHandler)(id<AffirmResponseProtocol> _Nullable, NSError * _Nullable);
-	delegate void AffirmRequestHandler([NullAllowed] AffirmResponseProtocol arg0, [NullAllowed] NSError arg1);
+	delegate void AffirmRequestHandler([NullAllowed] IAffirmResponseProtocol response, [NullAllowed] NSError error);
 
 	// @protocol AffirmClientProtocol <NSObject>
-	/* Check whether adding [Model] to this declaration is appropriate.
-	   [Model] is used to generate a C# class that implements this protocol,
-	   and might be useful for protocols that consumers are supposed to implement,
-	   since consumers can subclass the generated class instead of implementing
-	   the generated interface. If consumers are not supposed to implement this
-	   protocol, then [Model] is redundant and will generate code that will never
-	   be used. */
+	/*
+  Check whether adding [Model] to this declaration is appropriate.
+  [Model] is used to generate a C# class that implements this protocol,
+  and might be useful for protocols that consumers are supposed to implement,
+  since consumers can subclass the generated class instead of implementing
+  the generated interface. If consumers are not supposed to implement this
+  protocol, then [Model] is redundant and will generate code that will never
+  be used.
+*/
 	[Protocol]
 	[BaseType(typeof(NSObject))]
 	interface AffirmClientProtocol
@@ -521,7 +532,7 @@ namespace AffirmSDK
 		// @required +(NSString * _Nonnull)host;
 		[Static, Abstract]
 		[Export("host")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string Host { get; }
 
 		// @optional +(void)send:(id<AffirmRequestProtocol> _Nonnull)request handler:(AffirmRequestHandler _Nonnull)handler;
@@ -549,7 +560,7 @@ namespace AffirmSDK
 	}
 
 	[Static]
-	//[Verify (ConstantsInterfaceAssociation)]
+	//[Verify(ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
 		// extern double AffirmSDKVersionNumber;
@@ -682,28 +693,28 @@ namespace AffirmSDK
 		// +(NSString * _Nonnull)affirmSDKVersion;
 		[Static]
 		[Export("affirmSDKVersion")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string AffirmSDKVersion { get; }
 
 		// -(NSString * _Nonnull)domain;
 		[Export("domain")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string Domain { get; }
 
 		// -(NSString * _Nonnull)jsURL;
 		[Export("jsURL")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string JsURL { get; }
 
 		// -(NSString * _Nonnull)environmentDescription;
 		[Export("environmentDescription")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string EnvironmentDescription { get; }
 
 		// +(NSArray<NSHTTPCookie *> * _Nonnull)cookiesForAffirm;
 		[Static]
 		[Export("cookiesForAffirm")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSHttpCookie[] CookiesForAffirm { get; }
 
 		// +(void)deleteAffirmCookies;
@@ -1400,7 +1411,7 @@ namespace AffirmSDK
 
 		// -(NSDictionary * _Nonnull)dictionary;
 		[Export("dictionary")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDictionary Dictionary { get; }
 	}
 
@@ -1431,7 +1442,7 @@ namespace AffirmSDK
 
 		// -(NSDictionary * _Nonnull)dictionary;
 		[Export("dictionary")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDictionary Dictionary { get; }
 	}
 
@@ -1498,7 +1509,7 @@ namespace AffirmSDK
 	{
 		// -(NSString * _Nonnull)queryURLEncoding;
 		[Export("queryURLEncoding")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string QueryURLEncoding();
 
 		// -(NSError * _Nonnull)convertToNSErrorWithCode:(NSNumber * _Nonnull)code;
@@ -1507,7 +1518,7 @@ namespace AffirmSDK
 
 		// -(NSError * _Nonnull)convertToNSError;
 		[Export("convertToNSError")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSError ConvertToNSError();
 	}
 
@@ -1519,13 +1530,13 @@ namespace AffirmSDK
 		// +(NSBundle * _Nonnull)sdkBundle;
 		[Static]
 		[Export("sdkBundle")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSBundle SdkBundle();
 
 		// +(NSBundle * _Nonnull)resourceBundle;
 		[Static]
 		[Export("resourceBundle")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSBundle ResourceBundle();
 	}
 
@@ -1536,17 +1547,17 @@ namespace AffirmSDK
 	{
 		// -(NSDictionary * _Nonnull)convertToDictionary;
 		[Export("convertToDictionary")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDictionary ConvertToDictionary();
 
 		// -(NSString * _Nonnull)stringByRemovingIllegalCharacters;
 		[Export("stringByRemovingIllegalCharacters")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string StringByRemovingIllegalCharacters();
 
 		// -(NSDecimalNumber * _Nonnull)currencyDecimal;
 		[Export("currencyDecimal")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDecimalNumber CurrencyDecimal();
 	}
 
@@ -1557,12 +1568,12 @@ namespace AffirmSDK
 	{
 		// -(NSDecimalNumber * _Nonnull)toIntegerCents;
 		[Export("toIntegerCents")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		NSDecimalNumber ToIntegerCents();
 
 		// -(NSString * _Nonnull)formattedString;
 		[Export("formattedString")]
-		// [Verify (MethodToProperty)]
+		// [Verify(MethodToProperty)]
 		string FormattedString();
 	}
 
@@ -1581,10 +1592,10 @@ namespace AffirmSDK
 		void CheckNotNegative(NSDecimalNumber value, string name);
 	}
 
-	// @interface Utils (UIImage)	
+	// @interface Utils (UIImage)
 	[Category(AllowStaticMembers = true)]
 	[BaseType(typeof(UIImage))]
-    interface UIImageUtils
+	interface UIImageUtils
 	{
 		// +(UIImage * _Nullable)imageNamed:(NSString * _Nonnull)name ofType:(NSString * _Nonnull)type inBundle:(NSBundle * _Nullable)bundle;
 		[Static]
