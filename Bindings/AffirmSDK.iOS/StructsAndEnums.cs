@@ -70,4 +70,17 @@ namespace AffirmSDK
 		White,
 		BlueBlack
 	}
+
+	static class CFunctions
+	{
+		// extern NSString * _Nonnull FormatAffirmPageTypeString (AffirmPageType type);
+		[DllImport("__Internal")]
+		//[Verify(PlatformInvoke)]
+		static extern NSString FormatAffirmPageTypeString(AffirmPageType type);
+
+		// extern NSString * _Nonnull FormatAffirmColorString (AffirmColorType type);
+		[DllImport("__Internal")]
+		//[Verify(PlatformInvoke)]
+		static extern NSString FormatAffirmColorString(AffirmColorType type);
+	}
 }

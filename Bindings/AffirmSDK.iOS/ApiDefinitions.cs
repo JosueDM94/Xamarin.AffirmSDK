@@ -439,123 +439,86 @@ namespace AffirmSDK
 		AffirmCheckoutViewController StartCheckout(AffirmCheckout checkout, bool useVCN, bool getReasonCodes, IAffirmCheckoutDelegate @delegate);
 	}
 
-	// @protocol AffirmRequestProtocol <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
-	[Protocol]
+	// @interface AffirmRequest : NSObject
 	[BaseType(typeof(NSObject))]
-	interface AffirmRequestProtocol
+	interface AffirmRequest
 	{
-		// @required -(NSString * _Nonnull)path;
-		[Abstract]
+		// -(NSString * _Nonnull)path;
 		[Export("path")]
 		// [Verify(MethodToProperty)]
 		string Path { get; }
 
-		// @required -(AffirmHTTPMethod)method;
-		[Abstract]
+		// -(AffirmHTTPMethod)method;
 		[Export("method")]
 		// [Verify(MethodToProperty)]
 		AffirmHTTPMethod Method { get; }
 
-		// @required -(NSDictionary * _Nonnull)parameters;
-		[Abstract]
+		// -(NSDictionary * _Nonnull)parameters;
 		[Export("parameters")]
 		// [Verify(MethodToProperty)]
 		NSDictionary Parameters { get; }
 
-		// @optional -(Class _Nonnull)responseClass;
+		// -(Class _Nonnull)responseClass;
 		[Export("responseClass")]
 		// [Verify(MethodToProperty)]
 		Class ResponseClass { get; }
 
-		// @optional -(NSDictionary * _Nonnull)headers;
+		// -(NSDictionary * _Nonnull)headers;
 		[Export("headers")]
 		// [Verify(MethodToProperty)]
 		NSDictionary Headers { get; }
 	}
 
-	interface IAffirmRequestProtocol { }
-
-	// @protocol AffirmResponseProtocol <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
-	[Protocol]
+	// @interface AffirmResponse : NSObject
 	[BaseType(typeof(NSObject))]
-	interface AffirmResponseProtocol
+	interface AffirmResponse
 	{
-		// @optional +(id<AffirmResponseProtocol> _Nonnull)parse:(NSData * _Nonnull)data;
+		// +(AffirmResponse * _Nonnull)parse:(NSData * _Nonnull)data;
 		[Static]
 		[Export("parse:")]
-		AffirmResponseProtocol Parse(NSData data);
+		AffirmResponse Parse(NSData data);
 
-		// @optional +(id<AffirmResponseProtocol> _Nullable)parseError:(NSData * _Nonnull)data;
+		// +(AffirmResponse * _Nullable)parseError:(NSData * _Nonnull)data;
 		[Static]
 		[Export("parseError:")]
 		[return: NullAllowed]
-		AffirmResponseProtocol ParseError(NSData data);
+		AffirmResponse ParseError(NSData data);
 	}
 
-	interface IAffirmResponseProtocol { }
+	// typedef void (^AffirmRequestHandler)(AffirmResponse * _Nullable, NSError * _Nullable);
+	delegate void AffirmRequestHandler([NullAllowed] AffirmResponse response, [NullAllowed] NSError error);
 
-	// typedef void (^AffirmRequestHandler)(id<AffirmResponseProtocol> _Nullable, NSError * _Nullable);
-	delegate void AffirmRequestHandler([NullAllowed] IAffirmResponseProtocol response, [NullAllowed] NSError error);
-
-	// @protocol AffirmClientProtocol <NSObject>
-	/*
-  Check whether adding [Model] to this declaration is appropriate.
-  [Model] is used to generate a C# class that implements this protocol,
-  and might be useful for protocols that consumers are supposed to implement,
-  since consumers can subclass the generated class instead of implementing
-  the generated interface. If consumers are not supposed to implement this
-  protocol, then [Model] is redundant and will generate code that will never
-  be used.
-*/
-	[Protocol]
+	// @interface AffirmClient : NSObject
 	[BaseType(typeof(NSObject))]
-	interface AffirmClientProtocol
+	interface AffirmClient
 	{
-		// @required +(NSString * _Nonnull)host;
-		[Static, Abstract]
+		// +(NSString * _Nonnull)host;
+		[Static]
 		[Export("host")]
 		// [Verify(MethodToProperty)]
 		string Host { get; }
 
-		// @optional +(void)send:(id<AffirmRequestProtocol> _Nonnull)request handler:(AffirmRequestHandler _Nonnull)handler;
+		// +(void)send:(AffirmRequest * _Nonnull)request handler:(AffirmRequestHandler _Nonnull)handler;
 		[Static]
 		[Export("send:handler:")]
-		void Handler(IAffirmRequestProtocol request, AffirmRequestHandler handler);
+		void Send(AffirmRequest request, AffirmRequestHandler handler);
 	}
 
-	// @interface AffirmTrackerClient : NSObject <AffirmClientProtocol>
-	[BaseType(typeof(NSObject))]
-	interface AffirmTrackerClient : AffirmClientProtocol
+	// @interface AffirmTrackerClient : AffirmClient
+	[BaseType(typeof(AffirmClient))]
+	interface AffirmTrackerClient
 	{
 	}
 
-	// @interface AffirmPromoClient : NSObject <AffirmClientProtocol>
-	[BaseType(typeof(NSObject))]
-	interface AffirmPromoClient : AffirmClientProtocol
+	// @interface AffirmPromoClient : AffirmClient
+	[BaseType(typeof(AffirmClient))]
+	interface AffirmPromoClient
 	{
 	}
 
-	// @interface AffirmCheckoutClient : NSObject <AffirmClientProtocol>
-	[BaseType(typeof(NSObject))]
-	interface AffirmCheckoutClient : AffirmClientProtocol
+	// @interface AffirmCheckoutClient : AffirmClient
+	[BaseType(typeof(AffirmClient))]
+	interface AffirmCheckoutClient
 	{
 	}
 
@@ -1290,10 +1253,10 @@ namespace AffirmSDK
 		IntPtr Constructor(NSDictionary dict);
 	}
 
-	// @interface AffirmLogRequest : NSObject <AffirmRequestProtocol>
-	[BaseType(typeof(NSObject))]
+	// @interface AffirmLogRequest : AffirmRequest
+	[BaseType(typeof(AffirmRequest))]
 	[DisableDefaultCtor]
-	interface AffirmLogRequest : AffirmRequestProtocol
+	interface AffirmLogRequest
 	{
 		// @property (readonly, nonatomic) NSInteger logCount;
 		[Export("logCount")]
@@ -1312,10 +1275,10 @@ namespace AffirmSDK
 		IntPtr Constructor(string eventName, NSDictionary eventParameters, nint logCount);
 	}
 
-	// @interface AffirmPromoRequest : NSObject <AffirmRequestProtocol>
-	[BaseType(typeof(NSObject))]
+	// @interface AffirmPromoRequest : AffirmRequest
+	[BaseType(typeof(AffirmRequest))]
 	[DisableDefaultCtor]
-	interface AffirmPromoRequest : AffirmRequestProtocol
+	interface AffirmPromoRequest
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull publicKey;
 		[Export("publicKey")]
@@ -1358,10 +1321,10 @@ namespace AffirmSDK
 		IntPtr Constructor(string publicKey, string promoId, NSDecimalNumber amount, bool showCTA, [NullAllowed] string pageType, [NullAllowed] string logoType, [NullAllowed] string logoColor, [NullAllowed] AffirmItem[] items);
 	}
 
-	// @interface AffirmCheckoutRequest : NSObject <AffirmRequestProtocol>
-	[BaseType(typeof(NSObject))]
+	// @interface AffirmCheckoutRequest : AffirmRequest
+	[BaseType(typeof(AffirmRequest))]
 	[DisableDefaultCtor]
-	interface AffirmCheckoutRequest : AffirmRequestProtocol
+	interface AffirmCheckoutRequest
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull publicKey;
 		[Export("publicKey")]
@@ -1384,9 +1347,9 @@ namespace AffirmSDK
 		IntPtr Constructor(string publicKey, AffirmCheckout checkout, bool useVCN, nint cardAuthWindow);
 	}
 
-	// @interface AffirmPromoResponse : NSObject <AffirmResponseProtocol>
-	[BaseType(typeof(NSObject))]
-	interface AffirmPromoResponse : AffirmResponseProtocol
+	// @interface AffirmPromoResponse : AffirmResponse
+	[BaseType(typeof(AffirmResponse))]
+	interface AffirmPromoResponse
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull htmlAla;
 		[Export("htmlAla")]
@@ -1401,9 +1364,9 @@ namespace AffirmSDK
 		bool ShowPrequal { get; }
 	}
 
-	// @interface AffirmCheckoutResponse : NSObject <AffirmResponseProtocol>
-	[BaseType(typeof(NSObject))]
-	interface AffirmCheckoutResponse : AffirmResponseProtocol
+	// @interface AffirmCheckoutResponse : AffirmResponse
+	[BaseType(typeof(AffirmResponse))]
+	interface AffirmCheckoutResponse
 	{
 		// @property (readonly, copy, nonatomic) NSURL * _Nonnull redirectURL;
 		[Export("redirectURL", ArgumentSemantic.Copy)]
@@ -1415,10 +1378,10 @@ namespace AffirmSDK
 		NSDictionary Dictionary { get; }
 	}
 
-	// @interface AffirmErrorResponse : NSObject <AffirmResponseProtocol>
-	[BaseType(typeof(NSObject))]
+	// @interface AffirmErrorResponse : AffirmResponse
+	[BaseType(typeof(AffirmResponse))]
 	[DisableDefaultCtor]
-	interface AffirmErrorResponse : AffirmResponseProtocol
+	interface AffirmErrorResponse
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull message;
 		[Export("message")]
