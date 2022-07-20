@@ -316,12 +316,12 @@ namespace AffirmSDK
 		[Export("initWithItems:shipping:discounts:metadata:financingProgram:totalAmount:")]
 		IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber totalAmount);
 
-        // +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("checkout(items:shipping:payoutAmount:)")));
-        //[Introduced(PlatformName.iOS, 2, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
-        //[Deprecated(PlatformName.iOS, 13, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
-        //[Static]
-        //[Export("checkoutWithItems:shipping:payoutAmount:")]
-        //AffirmCheckout CheckoutWithItems(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber payoutAmount);
+		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("checkout(items:shipping:payoutAmount:)")));
+		//[Introduced(PlatformName.iOS, 2, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
+		//[Deprecated(PlatformName.iOS, 13, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
+		//[Static]
+		//[Export("checkoutWithItems:shipping:payoutAmount:")]
+		//AffirmCheckout CheckoutWithItems(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber payoutAmount);
 
 		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping totalAmount:(NSDecimalNumber * _Nonnull)totalAmount __attribute__((swift_name("checkout(items:shipping:totalAmount:)")));
 		[Static]

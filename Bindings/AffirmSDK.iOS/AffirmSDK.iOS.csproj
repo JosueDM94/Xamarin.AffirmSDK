@@ -29,6 +29,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\AffirmSDK.iOS.xml</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

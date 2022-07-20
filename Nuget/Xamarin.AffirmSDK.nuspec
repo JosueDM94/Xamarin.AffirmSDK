@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Xamarin.AffirmSDK</id>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
     <title>Xamarin.AffirmSDK</title>
     <authors>Josue Diaz</authors>
     <owners>Josue Diaz</owners>
@@ -13,9 +13,9 @@
     <projectUrl>https://github.com/JosueDM94/Xamarin.AffirmSDK</projectUrl>
     <description>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</description>
     <summary>Set of Xamarin bindings libraries of the Affirm SDK for Xamarin.iOS and Xamarin.Android</summary>
-    <releaseNotes>- Android Library Updated:
-[iOS] AffirmSDK 5.0.19
-[Android] AffirmSDK 2.0.20</releaseNotes>
+    <releaseNotes>Affirm iOS Updated:
+[iOS] AffirmSDK 5.0.20
+[Android] AffirmSDK 2.0.21</releaseNotes>
     <copyright>Copyright Josué Díaz © 2022</copyright>
     <language>en-US</language>
     <tags>xamarin, ios, android, affirm, checkout, sdk</tags>
