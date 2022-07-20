@@ -526,14 +526,6 @@ namespace AffirmSDK
 	//[Verify(ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
-		// extern double AffirmSDKVersionNumber;
-		[Field("AffirmSDKVersionNumber", "__Internal")]
-		double AffirmSDKVersionNumber { get; }
-
-		// extern const unsigned char [] AffirmSDKVersionString;
-		[Field("AffirmSDKVersionString", "__Internal")]
-		IntPtr AffirmSDKVersionString { get; }
-
 		// extern const NSErrorDomain _Nonnull AffirmSDKErrorDomain;
 		[Field("AffirmSDKErrorDomain", "__Internal")]
 		NSString AffirmSDKErrorDomain { get; }
@@ -739,8 +731,8 @@ namespace AffirmSDK
 		[NullAllowed, Export("number")]
 		string Number { get; }
 
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull callbackId;
-		[Export("callbackId")]
+		// @property (readonly, copy, nonatomic) NSString * _Nullable callbackId;
+		[NullAllowed, Export("callbackId")]
 		string CallbackId { get; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nullable cardholderName;
@@ -751,8 +743,8 @@ namespace AffirmSDK
 		[NullAllowed, Export("expiration")]
 		string Expiration { get; }
 
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull creditCardId;
-		[Export("creditCardId")]
+		// @property (readonly, copy, nonatomic) NSString * _Nullable creditCardId;
+		[NullAllowed, Export("creditCardId")]
 		string CreditCardId { get; }
 
 		// @property (copy, nonatomic) NSDate * _Nonnull expiredDate;
@@ -1407,6 +1399,19 @@ namespace AffirmSDK
 		[Export("dictionary")]
 		// [Verify(MethodToProperty)]
 		NSDictionary Dictionary { get; }
+	}
+
+	//[Static]
+	//[Verify(ConstantsInterfaceAssociation)]
+	partial interface Constants
+	{
+		// extern double AffirmSDKVersionNumber;
+		[Field("AffirmSDKVersionNumber", "__Internal")]
+		double AffirmSDKVersionNumber { get; }
+
+		// extern const unsigned char [] AffirmSDKVersionString;
+		[Field("AffirmSDKVersionString", "__Internal")]
+		IntPtr AffirmSDKVersionString { get; }
 	}
 
 	// @interface AffirmShippingDetail : NSObject <AffirmJSONifiable, NSCopying>
