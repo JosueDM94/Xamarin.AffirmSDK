@@ -1,25 +1,35 @@
 # Xamarin.AffirmSDK
+
+[![NuGet Badge](https://buildstats.info/nuget/Xamarin.AffirmSDK)](https://www.nuget.org/packages/Xamarin.AffirmSDK/)
+
 This is a set of Xamarin bindings of Affirm SDK for iOS and Android
 
-# Installation
+## Table of Contents ##
 
-Install by the NuGet Gallery, using the identifier "[Xamarin.AffirmSDK](https://www.nuget.org/packages/Xamarin.AffirmSDK)".
+- [Installation](#installation)
+- [Example](#example)
+- [Changelog](#changelog)
+- [Android](#affirm-Android-sdk)
+- [iOS](#affirm-ios-sdk)
 
-# Example
+## Installation ##
+
+The latest stable release of the AffirmSDK is [available on NuGet](https://www.nuget.org/packages/Xamarin.AffirmSDK).
+
+## Example ##
 
 A demo app that integrates Affirm is included in the repo. You may clone the [GitHub repository](https://github.com/JosueDM94/Xamarin.AffirmSDK) into a new Visual Studio project folder and run the Examples project.
 
-Changelog
+## Changelog ##
 ==============
 
 All notable changes to this project will be documented in [iOS changelog document](https://github.com/Affirm/affirm-merchant-sdk-ios/blob/master/CHANGELOG.md) and [Android changelog document](https://github.com/Affirm/affirm-merchant-sdk-android/blob/master/CHANGELOG.md).
 
-# Affirm Android SDK
+## Affirm Android SDK ##
 
 Affirm Android SDK allows you to offer Affirm in your own app.
 
-Usage Overview
-==================
+## Usage Overview
 
 Before you can start the initialization of Affirm SDK, you must first set the AffirmSDK with your `public API key` from your sandbox [Merchant Dashboard](https://sandbox.affirm.com/dashboard). You must set this key as follows:
 
@@ -353,12 +363,11 @@ We also support using fragment directly, only need to pass a ViewGroup id, we wi
 - Since there is no callback, it will return success after 10 seconds timeout
 - We will replace using the HTTP API after the API is done
 
-# Affirm iOS SDK
+## Affirm iOS SDK ##
 
 The Affirm iOS SDK allows you to offer Affirm in your own app.
 
-Usage Overview
-==============
+## Usage Overview
 
 An Affirm integration consists of two components: checkout and promotional messaging.
 
