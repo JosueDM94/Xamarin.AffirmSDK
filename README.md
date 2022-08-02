@@ -21,7 +21,6 @@ The latest stable release of the AffirmSDK is [available on NuGet](https://www.n
 A demo app that integrates Affirm is included in the repo. You may clone the [GitHub repository](https://github.com/JosueDM94/Xamarin.AffirmSDK) into a new Visual Studio project folder and run the Examples project.
 
 ## Changelog ##
-==============
 
 All notable changes to this project will be documented in [iOS changelog document](https://github.com/Affirm/affirm-merchant-sdk-ios/blob/master/CHANGELOG.md) and [Android changelog document](https://github.com/Affirm/affirm-merchant-sdk-android/blob/master/CHANGELOG.md).
 
