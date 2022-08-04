@@ -9,7 +9,7 @@ This is a set of Xamarin bindings of Affirm SDK for iOS and Android
 - [Installation](#installation)
 - [Example](#example)
 - [Changelog](#changelog)
-- [Android](#affirm-Android-sdk)
+- [Android](#affirm-android-sdk)
 - [iOS](#affirm-ios-sdk)
 
 ## Installation ##
