@@ -4,6 +4,7 @@ using Foundation;
 using ObjCRuntime;
 using UIKit;
 using WebKit;
+using System.Runtime.InteropServices;
 
 namespace AffirmSDK
 {
@@ -127,7 +128,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initBillingDetailWithName:(NSString * _Nullable)name email:(NSString * _Nullable)email phoneNumber:(NSString * _Nullable)phoneNumber addressWithLine1:(NSString * _Nullable)line1 line2:(NSString * _Nullable)line2 city:(NSString * _Nullable)city state:(NSString * _Nullable)state zipCode:(NSString * _Nullable)zipCode countryCode:(NSString * _Nullable)countryCode __attribute__((swift_name("init(name:email:phoneNumber:line1:line2:city:state:zipCode:countryCode:)")));
 		[Export("initBillingDetailWithName:email:phoneNumber:addressWithLine1:line2:city:state:zipCode:countryCode:")]
-		IntPtr Constructor([NullAllowed] string name, [NullAllowed] string email, [NullAllowed] string phoneNumber, [NullAllowed] string line1, [NullAllowed] string line2, [NullAllowed] string city, [NullAllowed] string state, [NullAllowed] string zipCode, [NullAllowed] string countryCode);
+		NativeHandle Constructor([NullAllowed] string name, [NullAllowed] string email, [NullAllowed] string phoneNumber, [NullAllowed] string line1, [NullAllowed] string line2, [NullAllowed] string city, [NullAllowed] string state, [NullAllowed] string zipCode, [NullAllowed] string countryCode);
 	}
 
 	// @interface AffirmCardInfoViewController : UIViewController
@@ -187,7 +188,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithName:(NSString * _Nonnull)name rangeStart:(NSString * _Nonnull)rangeStart rangeEnd:(NSString * _Nonnull)rangeEnd length:(NSInteger)length type:(AffirmBrandType)type;
 		[Export("initWithName:rangeStart:rangeEnd:length:type:")]
-		IntPtr Constructor(string name, string rangeStart, string rangeEnd, nint length, AffirmBrandType type);
+		NativeHandle Constructor(string name, string rangeStart, string rangeEnd, nint length, AffirmBrandType type);
 
 		// +(instancetype _Nonnull)brandWithName:(NSString * _Nonnull)name rangeStart:(NSString * _Nonnull)rangeStart rangeEnd:(NSString * _Nonnull)rangeEnd length:(NSInteger)length type:(AffirmBrandType)type;
 		[Static]
@@ -280,11 +281,11 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping taxAmount:(NSDecimalNumber * _Nonnull)taxAmount shippingAmount:(NSDecimalNumber * _Nonnull)shippingAmount discounts:(NSArray<AffirmDiscount *> * _Nullable)discounts metadata:(NSDictionary * _Nullable)metadata financingProgram:(NSString * _Nullable)financingProgram __attribute__((swift_name("init(items:shipping:taxAmount:shippingAmount:discounts:metadata:financingProgram:)")));
 		[Export("initWithItems:shipping:taxAmount:shippingAmount:discounts:metadata:financingProgram:")]
-		IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber taxAmount, NSDecimalNumber shippingAmount, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram);
+		NativeHandle Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber taxAmount, NSDecimalNumber shippingAmount, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram);
 
 		// -(instancetype _Nonnull)initWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping taxAmount:(NSDecimalNumber * _Nonnull)taxAmount shippingAmount:(NSDecimalNumber * _Nonnull)shippingAmount discounts:(NSArray<AffirmDiscount *> * _Nullable)discounts metadata:(NSDictionary * _Nullable)metadata financingProgram:(NSString * _Nullable)financingProgram orderId:(NSString * _Nullable)orderId __attribute__((swift_name("init(items:shipping:taxAmount:shippingAmount:discounts:metadata:financingProgram:orderId:)")));
 		[Export("initWithItems:shipping:taxAmount:shippingAmount:discounts:metadata:financingProgram:orderId:")]
-		IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber taxAmount, NSDecimalNumber shippingAmount, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, [NullAllowed] string orderId);
+		NativeHandle Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, NSDecimalNumber taxAmount, NSDecimalNumber shippingAmount, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, [NullAllowed] string orderId);
 
 		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping taxAmount:(NSDecimalNumber * _Nonnull)taxAmount shippingAmount:(NSDecimalNumber * _Nonnull)shippingAmount financingProgram:(NSString * _Nullable)financingProgram __attribute__((swift_name("checkout(items:shipping:taxAmount:shippingAmount:financingProgram:)")));
 		[Static]
@@ -310,11 +311,11 @@ namespace AffirmSDK
 		//[Introduced(PlatformName.iOS, 2, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
 		//[Deprecated(PlatformName.iOS, 13, 0, message: "Use initWithItems:shipping:discounts:metadata:financingProgram:totalAmount: instead.")]
 		//[Export("initWithItems:shipping:discounts:metadata:financingProgram:payoutAmount:")]
-		//IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber payoutAmount);
+		//NativeHandle Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber payoutAmount);
 
 		// -(instancetype _Nonnull)initWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping discounts:(NSArray<AffirmDiscount *> * _Nullable)discounts metadata:(NSDictionary * _Nullable)metadata financingProgram:(NSString * _Nullable)financingProgram totalAmount:(NSDecimalNumber * _Nonnull)totalAmount __attribute__((swift_name("init(items:shipping:discounts:metadata:financingProgram:totalAmount:)")));
 		[Export("initWithItems:shipping:discounts:metadata:financingProgram:totalAmount:")]
-		IntPtr Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber totalAmount);
+		NativeHandle Constructor(AffirmItem[] items, [NullAllowed] AffirmShippingDetail shipping, [NullAllowed] AffirmDiscount[] discounts, [NullAllowed] NSDictionary metadata, [NullAllowed] string financingProgram, NSDecimalNumber totalAmount);
 
 		// +(AffirmCheckout * _Nonnull)checkoutWithItems:(NSArray<AffirmItem *> * _Nonnull)items shipping:(AffirmShippingDetail * _Nullable)shipping payoutAmount:(NSDecimalNumber * _Nonnull)payoutAmount __attribute__((availability(ios, introduced=2.0, deprecated=13.0))) __attribute__((swift_name("checkout(items:shipping:payoutAmount:)")));
 		//[Introduced(PlatformName.iOS, 2, 0, message: "Use checkoutWithItems:shipping:totalAmount: instead.")]
@@ -335,7 +336,7 @@ namespace AffirmSDK
 	}
 
 	// @protocol AffirmCheckoutDelegate <NSObject>
-	[Protocol, Model(AutoGeneratedName = true)]
+	[Protocol, Model]
 	[BaseType(typeof(NSObject))]
 	interface AffirmCheckoutDelegate
 	{
@@ -403,12 +404,12 @@ namespace AffirmSDK
 		// -(instancetype _Nonnull)initWithDelegate:(id<AffirmCheckoutDelegate> _Nonnull)delegate checkout:(AffirmCheckout * _Nonnull)checkout useVCN:(BOOL)useVCN getReasonCodes:(BOOL)getReasonCodes __attribute__((swift_name("init(delegate:checkout:useVCN:getReasonCodes:)"))) __attribute__((objc_designated_initializer));
 		[Export("initWithDelegate:checkout:useVCN:getReasonCodes:")]
 		[DesignatedInitializer]
-		IntPtr Constructor(IAffirmCheckoutDelegate @delegate, AffirmCheckout checkout, bool useVCN, bool getReasonCodes);
+		NativeHandle Constructor(IAffirmCheckoutDelegate @delegate, AffirmCheckout checkout, bool useVCN, bool getReasonCodes);
 
 		// -(instancetype _Nonnull)initWithDelegate:(id<AffirmCheckoutDelegate> _Nonnull)delegate checkout:(AffirmCheckout * _Nonnull)checkout useVCN:(BOOL)useVCN getReasonCodes:(BOOL)getReasonCodes cardAuthWindow:(NSInteger)cardAuthWindow __attribute__((swift_name("init(delegate:checkout:useVCN:getReasonCodes:cardAuthWindow:)"))) __attribute__((objc_designated_initializer));
 		[Export("initWithDelegate:checkout:useVCN:getReasonCodes:cardAuthWindow:")]
 		[DesignatedInitializer]
-		IntPtr Constructor(IAffirmCheckoutDelegate @delegate, AffirmCheckout checkout, bool useVCN, bool getReasonCodes, nint cardAuthWindow);
+		NativeHandle Constructor(IAffirmCheckoutDelegate @delegate, AffirmCheckout checkout, bool useVCN, bool getReasonCodes, nint cardAuthWindow);
 
 		// +(UINavigationController * _Nonnull)startCheckoutWithNavigation:(AffirmCheckout * _Nonnull)checkout useVCN:(BOOL)useVCN getReasonCodes:(BOOL)getReasonCodes delegate:(id<AffirmCheckoutDelegate> _Nonnull)delegate __attribute__((availability(ios, introduced=2.0, deprecated=14.0))) __attribute__((swift_name("startNavigation(checkout:useVCN:getReasonCodes:delegate:)")));
 		[Introduced(PlatformName.iOS, 2, 0, message: "Use initWithDelegate:checkout:useVCN:getReasonCodes: instead.")]
@@ -704,7 +705,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithDict:(NSDictionary * _Nonnull)dict;
 		[Export("initWithDict:")]
-		IntPtr Constructor(NSDictionary dict);
+		NativeHandle Constructor(NSDictionary dict);
 	}
 
 	// @interface AffirmCreditCard : NSObject
@@ -758,11 +759,11 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithDict:(NSDictionary * _Nonnull)dict __attribute__((swift_name("init(dict:)")));
 		[Export("initWithDict:")]
-		IntPtr Constructor(NSDictionary dict);
+		NativeHandle Constructor(NSDictionary dict);
 	}
 
 	// @protocol AffirmPrequalDelegate <NSObject>
-	[Protocol, Model(AutoGeneratedName = true)]
+	[Protocol, Model]
 	[BaseType(typeof(NSObject))]
 	interface AffirmPrequalDelegate
 	{
@@ -797,15 +798,15 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithPromoID:(NSString * _Nullable)promoID showCTA:(BOOL)showCTA presentingViewController:(UIViewController<AffirmPrequalDelegate> * _Nonnull)presentingViewController frame:(CGRect)frame __attribute__((swift_name("init(promoID:showCTA:presentingViewController:frame:)")));
 		[Export("initWithPromoID:showCTA:presentingViewController:frame:")]
-		IntPtr Constructor([NullAllowed] string promoID, bool showCTA, IAffirmPrequalDelegate presentingViewController, CGRect frame);
+		NativeHandle Constructor([NullAllowed] string promoID, bool showCTA, IAffirmPrequalDelegate presentingViewController, CGRect frame);
 
 		// -(instancetype _Nonnull)initWithShowCTA:(BOOL)showCTA pageType:(AffirmPageType)pageType presentingViewController:(UIViewController<AffirmPrequalDelegate> * _Nonnull)presentingViewController frame:(CGRect)frame __attribute__((swift_name("init(showCTA:pageType:presentingViewController:frame:)")));
 		[Export("initWithShowCTA:pageType:presentingViewController:frame:")]
-		IntPtr Constructor(bool showCTA, AffirmPageType pageType, IAffirmPrequalDelegate presentingViewController, CGRect frame);
+		NativeHandle Constructor(bool showCTA, AffirmPageType pageType, IAffirmPrequalDelegate presentingViewController, CGRect frame);
 
 		// -(instancetype _Nonnull)initWithPromoID:(NSString * _Nullable)promoID showCTA:(BOOL)showCTA pageType:(AffirmPageType)pageType presentingViewController:(UIViewController<AffirmPrequalDelegate> * _Nonnull)presentingViewController frame:(CGRect)frame __attribute__((swift_name("init(promoID:showCTA:pageType:presentingViewController:frame:)")));
 		[Export("initWithPromoID:showCTA:pageType:presentingViewController:frame:")]
-		IntPtr Constructor([NullAllowed] string promoID, bool showCTA, AffirmPageType pageType, IAffirmPrequalDelegate presentingViewController, CGRect frame);
+		NativeHandle Constructor([NullAllowed] string promoID, bool showCTA, AffirmPageType pageType, IAffirmPrequalDelegate presentingViewController, CGRect frame);
 
 		// -(void)configureByHtmlStylingWithAmount:(NSDecimalNumber * _Nonnull)amount __attribute__((swift_name("configureByHtmlStyling(amount:)")));
 		[Export("configureByHtmlStylingWithAmount:")]
@@ -845,7 +846,7 @@ namespace AffirmSDK
 	}
 
 	// @interface Helper (AffirmPromotionalButton)
-	[Category(AllowStaticMembers = true)]
+	[Category]
 	[BaseType(typeof(AffirmPromotionalButton))]
 	interface AffirmPromotionalButtonHelper
 	{
@@ -910,7 +911,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithName:(NSString * _Nonnull)name amount:(NSDecimalNumber * _Nonnull)amount __attribute__((swift_name("init(name:amount:)")));
 		[Export("initWithName:amount:")]
-		IntPtr Constructor(string name, NSDecimalNumber amount);
+		NativeHandle Constructor(string name, NSDecimalNumber amount);
 	}
 
 	// @interface AffirmEligibilityViewController : UIViewController
@@ -992,7 +993,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithName:(NSString * _Nonnull)name SKU:(NSString * _Nonnull)SKU unitPrice:(NSDecimalNumber * _Nonnull)unitPrice quantity:(NSInteger)quantity URL:(NSURL * _Nonnull)URL __attribute__((swift_name("init(name:sku:unitPrice:quantity:url:)")));
 		[Export("initWithName:SKU:unitPrice:quantity:URL:")]
-		IntPtr Constructor(string name, string SKU, NSDecimalNumber unitPrice, nint quantity, NSUrl URL);
+		NativeHandle Constructor(string name, string SKU, NSDecimalNumber unitPrice, nint quantity, NSUrl URL);
 	}
 
 	// @interface AffirmLogger : NSObject
@@ -1084,7 +1085,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithStoreName:(NSString * _Nonnull)storeName checkoutId:(NSString * _Nullable)checkoutId coupon:(NSString * _Nullable)coupon currency:(NSString * _Nullable)currency discount:(NSDecimalNumber * _Nullable)discount orderId:(NSString * _Nonnull)orderId paymentMethod:(NSString * _Nullable)paymentMethod revenue:(NSDecimalNumber * _Nullable)revenue shipping:(NSDecimalNumber * _Nullable)shipping shippingMethod:(NSString * _Nullable)shippingMethod tax:(NSDecimalNumber * _Nullable)tax total:(NSDecimalNumber * _Nullable)total __attribute__((swift_name("init(storeName:checkoutId:coupon:currency:discount:orderId:paymentMethod:revenue:shipping:shippingMethod:tax:total:)")));
 		[Export("initWithStoreName:checkoutId:coupon:currency:discount:orderId:paymentMethod:revenue:shipping:shippingMethod:tax:total:")]
-		IntPtr Constructor(string storeName, [NullAllowed] string checkoutId, [NullAllowed] string coupon, [NullAllowed] string currency, [NullAllowed] NSDecimalNumber discount, string orderId, [NullAllowed] string paymentMethod, [NullAllowed] NSDecimalNumber revenue, [NullAllowed] NSDecimalNumber shipping, [NullAllowed] string shippingMethod, [NullAllowed] NSDecimalNumber tax, [NullAllowed] NSDecimalNumber total);
+		NativeHandle Constructor(string storeName, [NullAllowed] string checkoutId, [NullAllowed] string coupon, [NullAllowed] string currency, [NullAllowed] NSDecimalNumber discount, string orderId, [NullAllowed] string paymentMethod, [NullAllowed] NSDecimalNumber revenue, [NullAllowed] NSDecimalNumber shipping, [NullAllowed] string shippingMethod, [NullAllowed] NSDecimalNumber tax, [NullAllowed] NSDecimalNumber total);
 
 		// +(AffirmOrder * _Nonnull)orderWithStoreName:(NSString * _Nonnull)storeName checkoutId:(NSString * _Nullable)checkoutId coupon:(NSString * _Nullable)coupon currency:(NSString * _Nullable)currency discount:(NSDecimalNumber * _Nullable)discount orderId:(NSString * _Nonnull)orderId paymentMethod:(NSString * _Nullable)paymentMethod revenue:(NSDecimalNumber * _Nullable)revenue shipping:(NSDecimalNumber * _Nullable)shipping shippingMethod:(NSString * _Nullable)shippingMethod tax:(NSDecimalNumber * _Nullable)tax total:(NSDecimalNumber * _Nullable)total __attribute__((swift_name("order(storeName:checkoutId:coupon:currency:discount:orderId:paymentMethod:revenue:shipping:shippingMethod:tax:total:)")));
 		[Static]
@@ -1122,7 +1123,7 @@ namespace AffirmSDK
 	{
 		// -(instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL;
 		[Export("initWithURL:")]
-		IntPtr Constructor(NSUrl URL);
+		NativeHandle Constructor(NSUrl URL);
 	}
 
 	// @interface AffirmPrequalModalViewController : AffirmBaseWebViewController
@@ -1141,7 +1142,7 @@ namespace AffirmSDK
 		// -(instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)URL delegate:(id<AffirmPrequalDelegate> _Nonnull)delegate __attribute__((swift_name("init(url:delegate:)"))) __attribute__((objc_designated_initializer));
 		[Export("initWithURL:delegate:")]
 		[DesignatedInitializer]
-		IntPtr Constructor(NSUrl URL, IAffirmPrequalDelegate @delegate);
+		NativeHandle Constructor(NSUrl URL, IAffirmPrequalDelegate @delegate);
 	}
 
 	// @interface AffirmProduct : NSObject <AffirmJSONifiable, NSCopying>
@@ -1186,7 +1187,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithBrand:(NSString * _Nullable)brand category:(NSString * _Nullable)category coupon:(NSString * _Nullable)coupon name:(NSString * _Nullable)name price:(NSDecimalNumber * _Nullable)price productId:(NSString * _Nonnull)productId quantity:(NSInteger)quantity variant:(NSString * _Nullable)variant currency:(NSString * _Nullable)currency __attribute__((swift_name("init(brand:category:coupon:name:price:productId:quantity:variant:currency:)")));
 		[Export("initWithBrand:category:coupon:name:price:productId:quantity:variant:currency:")]
-		IntPtr Constructor([NullAllowed] string brand, [NullAllowed] string category, [NullAllowed] string coupon, [NullAllowed] string name, [NullAllowed] NSDecimalNumber price, string productId, nint quantity, [NullAllowed] string variant, [NullAllowed] string currency);
+		NativeHandle Constructor([NullAllowed] string brand, [NullAllowed] string category, [NullAllowed] string coupon, [NullAllowed] string name, [NullAllowed] NSDecimalNumber price, string productId, nint quantity, [NullAllowed] string variant, [NullAllowed] string currency);
 
 		// +(AffirmProduct * _Nonnull)productWithBrand:(NSString * _Nullable)brand category:(NSString * _Nullable)category coupon:(NSString * _Nullable)coupon name:(NSString * _Nullable)name price:(NSDecimalNumber * _Nullable)price productId:(NSString * _Nonnull)productId quantity:(NSInteger)quantity variant:(NSString * _Nullable)variant currency:(NSString * _Nullable)currency __attribute__((swift_name("product(brand:category:coupon:name:price:productId:quantity:variant:currency:)")));
 		[Static]
@@ -1215,12 +1216,12 @@ namespace AffirmSDK
 		// -(instancetype _Nonnull)initWithPromoId:(NSString * _Nullable)promoId amount:(NSDecimalNumber * _Nonnull)amount delegate:(id<AffirmPrequalDelegate> _Nonnull)delegate __attribute__((swift_name("init(promoId:amount:delegate:)"))) __attribute__((objc_designated_initializer));
 		[Export("initWithPromoId:amount:delegate:")]
 		[DesignatedInitializer]
-		IntPtr Constructor([NullAllowed] string promoId, NSDecimalNumber amount, IAffirmPrequalDelegate @delegate);
+		NativeHandle Constructor([NullAllowed] string promoId, NSDecimalNumber amount, IAffirmPrequalDelegate @delegate);
 
 		// -(instancetype _Nonnull)initWithPromoId:(NSString * _Nullable)promoId amount:(NSDecimalNumber * _Nonnull)amount pageType:(AffirmPageType)pageType delegate:(id<AffirmPrequalDelegate> _Nonnull)delegate __attribute__((swift_name("init(promoId:amount:pageType:delegate:)"))) __attribute__((objc_designated_initializer));
 		[Export("initWithPromoId:amount:pageType:delegate:")]
 		[DesignatedInitializer]
-		IntPtr Constructor([NullAllowed] string promoId, NSDecimalNumber amount, AffirmPageType pageType, IAffirmPrequalDelegate @delegate);
+		NativeHandle Constructor([NullAllowed] string promoId, NSDecimalNumber amount, AffirmPageType pageType, IAffirmPrequalDelegate @delegate);
 	}
 
 	// @interface AffirmReasonCode : NSObject
@@ -1242,7 +1243,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithDict:(NSDictionary * _Nonnull)dict __attribute__((swift_name("init(dict:)")));
 		[Export("initWithDict:")]
-		IntPtr Constructor(NSDictionary dict);
+		NativeHandle Constructor(NSDictionary dict);
 	}
 
 	// @interface AffirmLogRequest : AffirmRequest
@@ -1264,7 +1265,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithEventName:(NSString * _Nonnull)eventName eventParameters:(NSDictionary * _Nonnull)eventParameters logCount:(NSInteger)logCount;
 		[Export("initWithEventName:eventParameters:logCount:")]
-		IntPtr Constructor(string eventName, NSDictionary eventParameters, nint logCount);
+		NativeHandle Constructor(string eventName, NSDictionary eventParameters, nint logCount);
 	}
 
 	// @interface AffirmPromoRequest : AffirmRequest
@@ -1306,11 +1307,11 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithPublicKey:(NSString * _Nonnull)publicKey promoId:(NSString * _Nonnull)promoId amount:(NSDecimalNumber * _Nonnull)amount showCTA:(BOOL)showCTA pageType:(NSString * _Nullable)pageType logoType:(NSString * _Nullable)logoType logoColor:(NSString * _Nullable)logoColor;
 		[Export("initWithPublicKey:promoId:amount:showCTA:pageType:logoType:logoColor:")]
-		IntPtr Constructor(string publicKey, string promoId, NSDecimalNumber amount, bool showCTA, [NullAllowed] string pageType, [NullAllowed] string logoType, [NullAllowed] string logoColor);
+		NativeHandle Constructor(string publicKey, string promoId, NSDecimalNumber amount, bool showCTA, [NullAllowed] string pageType, [NullAllowed] string logoType, [NullAllowed] string logoColor);
 
 		// -(instancetype _Nonnull)initWithPublicKey:(NSString * _Nonnull)publicKey promoId:(NSString * _Nonnull)promoId amount:(NSDecimalNumber * _Nonnull)amount showCTA:(BOOL)showCTA pageType:(NSString * _Nullable)pageType logoType:(NSString * _Nullable)logoType logoColor:(NSString * _Nullable)logoColor items:(NSArray<AffirmItem *> * _Nullable)items;
 		[Export("initWithPublicKey:promoId:amount:showCTA:pageType:logoType:logoColor:items:")]
-		IntPtr Constructor(string publicKey, string promoId, NSDecimalNumber amount, bool showCTA, [NullAllowed] string pageType, [NullAllowed] string logoType, [NullAllowed] string logoColor, [NullAllowed] AffirmItem[] items);
+		NativeHandle Constructor(string publicKey, string promoId, NSDecimalNumber amount, bool showCTA, [NullAllowed] string pageType, [NullAllowed] string logoType, [NullAllowed] string logoColor, [NullAllowed] AffirmItem[] items);
 	}
 
 	// @interface AffirmCheckoutRequest : AffirmRequest
@@ -1336,7 +1337,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithPublicKey:(NSString * _Nonnull)publicKey checkout:(AffirmCheckout * _Nonnull)checkout useVCN:(BOOL)useVCN cardAuthWindow:(NSInteger)cardAuthWindow;
 		[Export("initWithPublicKey:checkout:useVCN:cardAuthWindow:")]
-		IntPtr Constructor(string publicKey, AffirmCheckout checkout, bool useVCN, nint cardAuthWindow);
+		NativeHandle Constructor(string publicKey, AffirmCheckout checkout, bool useVCN, nint cardAuthWindow);
 	}
 
 	// @interface AffirmPromoResponse : AffirmResponse
@@ -1393,25 +1394,12 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initWithMessage:(NSString * _Nonnull)message code:(NSString * _Nonnull)code type:(NSString * _Nonnull)type statusCode:(NSNumber * _Nonnull)statusCode;
 		[Export("initWithMessage:code:type:statusCode:")]
-		IntPtr Constructor(string message, string code, string type, NSNumber statusCode);
+		NativeHandle Constructor(string message, string code, string type, NSNumber statusCode);
 
 		// -(NSDictionary * _Nonnull)dictionary;
 		[Export("dictionary")]
 		// [Verify(MethodToProperty)]
 		NSDictionary Dictionary { get; }
-	}
-
-	//[Static]
-	//[Verify(ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern double AffirmSDKVersionNumber;
-		[Field("AffirmSDKVersionNumber", "__Internal")]
-		double AffirmSDKVersionNumber { get; }
-
-		// extern const unsigned char [] AffirmSDKVersionString;
-		[Field("AffirmSDKVersionString", "__Internal")]
-		IntPtr AffirmSDKVersionString { get; }
 	}
 
 	// @interface AffirmShippingDetail : NSObject <AffirmJSONifiable, NSCopying>
@@ -1467,7 +1455,7 @@ namespace AffirmSDK
 
 		// -(instancetype _Nonnull)initShippingDetailWithName:(NSString * _Nonnull)name email:(NSString * _Nullable)email phoneNumber:(NSString * _Nullable)phoneNumber addressWithLine1:(NSString * _Nonnull)line1 line2:(NSString * _Nonnull)line2 city:(NSString * _Nonnull)city state:(NSString * _Nonnull)state zipCode:(NSString * _Nonnull)zipCode countryCode:(NSString * _Nonnull)countryCode __attribute__((swift_name("init(name:email:phoneNumber:line1:line2:city:state:zipCode:countryCode:)")));
 		[Export("initShippingDetailWithName:email:phoneNumber:addressWithLine1:line2:city:state:zipCode:countryCode:")]
-		IntPtr Constructor(string name, [NullAllowed] string email, [NullAllowed] string phoneNumber, string line1, string line2, string city, string state, string zipCode, string countryCode);
+		NativeHandle Constructor(string name, [NullAllowed] string email, [NullAllowed] string phoneNumber, string line1, string line2, string city, string state, string zipCode, string countryCode);
 	}
 
 	// @interface Utils (NSDictionary)
@@ -1491,7 +1479,7 @@ namespace AffirmSDK
 	}
 
 	// @interface Utils (NSBundle)
-	[Category(AllowStaticMembers = true)]
+	[Category]
 	[BaseType(typeof(NSBundle))]
 	interface NSBundleUtils
 	{
@@ -1561,7 +1549,7 @@ namespace AffirmSDK
 	}
 
 	// @interface Utils (UIImage)
-	[Category(AllowStaticMembers = true)]
+	[Category]
 	[BaseType(typeof(UIImage))]
 	interface UIImageUtils
 	{
